@@ -6,39 +6,30 @@ const Profile = () => {
 
     const [loading, setLoading] = useState(true)
 
-
-
     useEffect(() => {
         getProfileData();
     }, [])
 
 
     const getProfileData = () => {
-
         const token = JSON.parse(localStorage.getItem('token'))
-
         const header = {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         }
-
         axios.get('https://api.escuelajs.co/api/v1/auth/profile', header)
             .then((res) => {
                 setLoading(false)
                 setUserData(res.data)
                 console.log("profile data", res)
-
             })
             .catch((err) => {
                 setLoading(false)
                 alert("You are not logged in")
                 console.log("Error occured", err)
-
             })
     }
-
-
 
 
     return (
