@@ -18,29 +18,26 @@ const Profile = () => {
             .then((res) => {
                 setUserData(res.data)
                 console.log("profile data", res)
-                // setUserData('');
+              
             })
             .catch((err) => {
                 alert("You are not logged in")
                 console.log("Error occured", err)
-                setUserData('');
+              
             })
     }
-    const handleLogout = () => {
-        setUserData()
-        localStorage.removeItem("token");
-        alert("Log out success");
-    }
+
+ 
 
 
     return (
-        <div className='py-5 bg-blue-300 flex justify-center'>
+        <div className='py-5 bg-rose-300 flex justify-center'>
             <div className='flex  justify-around  w-full'>
 
                 <button className='bg-blue-400 text-white px-3 py-1 h-fit' onClick={getProfileData}>Get Profile Data</button>
 
 
-                <button className='bg-red-500 text-white px-4 py-1 h-fit' onClick={handleLogout}>Log Out </button>
+                {/* <button className='bg-red-500 text-white px-4 py-1 h-fit' onClick={handleLogout}>Log Out </button> */}
 
 
                 {userData &&
