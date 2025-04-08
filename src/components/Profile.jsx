@@ -41,12 +41,7 @@ const Profile = () => {
         <div className='py-5 bg-rose-300 flex justify-center'>
             <div className='flex  justify-around  w-full'>
 
-                {/* <button className='bg-blue-400 text-white px-3 py-1 h-fit' onClick={getProfileData}>Get Profile Data</button> */}
-
-
-                {/* <button className='bg-red-500 text-white px-4 py-1 h-fit' onClick={handleLogout}>Log Out </button> */}
-
-
+               
                 {userData &&
 
                     <div>

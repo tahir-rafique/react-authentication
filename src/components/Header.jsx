@@ -1,12 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
+
 
 const Header = () => {
+
+
+    const navigate = useNavigate()
 
 
     const token = localStorage.getItem('token');
 
     const handleLogout = () => {
+        navigate('/')
         localStorage.removeItem("token");
         alert("Log out success");
     }
