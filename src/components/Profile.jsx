@@ -4,6 +4,8 @@ import axios from 'axios'
 const Profile = () => {
     const [userData, setUserData] = useState()
 
+    const [loading, setLoading] = useState(true)
+
 
 
     useEffect(() => {
@@ -23,11 +25,13 @@ const Profile = () => {
 
         axios.get('https://api.escuelajs.co/api/v1/auth/profile', header)
             .then((res) => {
+                setLoading(false)
                 setUserData(res.data)
                 console.log("profile data", res)
 
             })
             .catch((err) => {
+                setLoading(false)
                 alert("You are not logged in")
                 console.log("Error occured", err)
 
@@ -41,9 +45,12 @@ const Profile = () => {
         <div className='py-5 bg-rose-300 flex justify-center'>
             <div className='flex  justify-around  w-full'>
 
-               
-                {userData &&
 
+                {loading
+                    ?
+                    <p className='bg-yellow-300 px-10 py-2 text-3xl'>Loading.....</p>
+                    :
+                    userData &&
                     <div>
                         <p>Name : {userData?.name || "N/A"} </p>
                         <p>Email : {userData?.email || "N/A"}</p>
