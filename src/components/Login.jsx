@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 // "email": "john@mail.com",
 //   "password": "changeme"
@@ -7,6 +8,9 @@ import axios from 'axios';
 const Login = () => {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+
+
+    const navigate = useNavigate();
 
 
     const handleSubmit = () => {
@@ -19,7 +23,8 @@ const Login = () => {
         axios.post('https://api.escuelajs.co/api/v1/auth/login', payload)
             .then((res) => {
                 localStorage.setItem("token", JSON.stringify(res.data.access_token));
-                alert("Login Success");
+                // alert("Login Success");
+                navigate('/profile')
                 console.log("Login Successful", res)
                 setEmail('');
                 setPassword('');
